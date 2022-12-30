@@ -3,25 +3,34 @@ cmake_minimum_required(VERSION 3.18)
 include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE) # enable git progress
 
-#
-# GLFW
-#
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+add_library(DISP_lib INTERFACE)
 
-FetchContent_Declare(
-  glfw
-  GIT_REPOSITORY          https://github.com/glfw/glfw.git
-  GIT_TAG                 3.3.8
-  GIT_SHALLOW             TRUE
-  GIT_SUBMODULES_RECURSE  FALSE
-  GIT_PROGRESS            TRUE
-  GIT_SUBMODULES          ""
-)
-FetchContent_MakeAvailable(glfw)
+# At the moment only OpenGL is supported for backend.
 
-
-add_subdirectory(imgui)
-add_subdirectory(implot)
+# 1. glad for opengl
 add_subdirectory(glad)
+# 2. glfw for window creation
+include(GLFW.cmake)
+# 3. imgui
+add_subdirectory(imgui)
+
+# glfw is included with imgui
+target_link_libraries(DISP_lib INTERFACE imgui glad)
+
+#
+# include dependencies
+#
+option(DISP_dep_implot "include ImPlot in build (some examples require ImPlot)" ON)
+if(DISP_dep_implot)
+  include(ImPlot.cmake)
+  target_link_libraries(DISP_lib INTERFACE implot)
+endif()
+
+option(DISP_stb "include stb in build" OFF)
+if(DISP_stb)
+    include(stb.cmake)
+    target_link_libraries(DISP_lib INTERFACE stb)
+endif()
+
+
+

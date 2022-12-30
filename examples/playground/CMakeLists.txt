@@ -13,3 +13,9 @@ set_target_properties(playground PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "DISP-Play
 
 # add DISP as library dependency
 target_link_libraries(playground DISP)
+
+add_custom_command(TARGET playground POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/assets
+        ${CMAKE_CURRENT_BINARY_DIR}/assets
+)
