@@ -32,5 +32,9 @@ if(DISP_stb)
     target_link_libraries(DISP_lib INTERFACE stb)
 endif()
 
-
+option(DISP_entt "include entt in build" OFF)
+if(DISP_entt)
+    include(entt.cmake)
+    target_link_libraries(DISP_lib INTERFACE entt)
+endif()
 
