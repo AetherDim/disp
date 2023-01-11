@@ -12,7 +12,7 @@ add_executable(playground Playground.cpp)
 set_target_properties(playground PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "DISP-Playground")
 
 # add DISP as library dependency
-target_link_libraries(playground DISP)
+target_link_libraries(playground PRIVATE DISP)
 
 add_custom_command(TARGET playground POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory

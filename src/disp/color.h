@@ -46,10 +46,11 @@ struct RGBColor_t {
         return (r + g + b) / 3;
     }
 };
-#pragma pack (pop)
 
 struct YCRCBColor_t {
     uint8_t y;
     uint8_t cb;
     uint8_t cr;
 };
+
+#pragma pack (pop)

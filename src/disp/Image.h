@@ -2,10 +2,10 @@
 
 #include <string>
 #include <vector>
-#include <glad/glad.h>
-#include <imgui.h>
+#include "glad/glad.h"
+#include "imgui.h"
 #include <memory>
-#include "Color.h"
+#include "disp/color.h"
 #include "RgbBuffer.h"
 #include "ImageStats.h"
 

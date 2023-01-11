@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include <Image.h>
+#include "Image.h"
 
-#include <imgui.h>
-#include <implot.h>
+#include "imgui.h"
+#include "implot.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION

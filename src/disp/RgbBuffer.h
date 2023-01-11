@@ -4,7 +4,7 @@
 
 #include <memory>
 #include <string>
-#include "Color.h"
+#include "disp/color.h"
 
 class RgbBuffer {
 public:
