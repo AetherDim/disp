@@ -6,7 +6,7 @@ include(FetchContent)
 FetchContent_Declare(
   imgui
   GIT_REPOSITORY          https://github.com/ocornut/imgui.git
-  GIT_TAG                 38cfe22b8b1e353e168811f8daad5dc7b8730fd0
+  GIT_TAG                 e2cede6542d2d6c83598d4d34dc51de84aeb282f
   #GIT_SHALLOW            TRUE
   GIT_SUBMODULES_RECURSE  FALSE
   GIT_PROGRESS            TRUE
@@ -38,7 +38,7 @@ endif()
 
 # add global compile definition for imgui settings
 # all other targets will have to include this (including imgui itself)
-target_compile_definitions(imgui_backend PUBLIC IMGUI_USER_CONFIG="imconfig_custom.h")
+target_compile_definitions(imgui_backend PUBLIC IMGUI_USER_CONFIG="imconfig_custom.h" IMGUI_DEFINE_MATH_OPERATORS)
 
 # disable backend specific includes for all top project
 # we will use glad as OpenGL loader
