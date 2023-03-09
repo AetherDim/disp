@@ -9,12 +9,15 @@ class GraphicsHandler {
 public:
 	using RenderCallback_t = std::function<void()>;
 
+	GraphicsHandler(std::string name, RenderCallback_t const& f);
 	GraphicsHandler(std::string name);
 	~GraphicsHandler();
 
 	bool add_render_callback(RenderCallback_t const& f);
 
 	void run();
+    void step();
+    bool shouldExit();
 
 private:
 	bool init();
